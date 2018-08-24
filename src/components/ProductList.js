@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Glyphicon } from 'react-bootstrap';
+import store from '../store';
+import { addToCart } from  '../actionCreator';
 
 const styles = {
   products: {
@@ -33,7 +35,7 @@ class ProductList extends Component {
       <div style={styles.products}>
         {this.state.products.map(product =>
           <div className="thumbnail" style={styles.product} key={product.id}>
-            <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name}/>
             <div className="caption">
               <h4>{product.name}</h4>
               <p>
@@ -47,7 +49,7 @@ class ProductList extends Component {
   }
 
   addToCart(product) {
-
+    store.dispatch(addToCart(product));
   }
 }
 
